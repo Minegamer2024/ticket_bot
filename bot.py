@@ -226,12 +226,12 @@ async def reomve(interaction: discord.Interaction, member: discord.User):
                 if not permission.view_channel and not permission.send_messages:
                     await interaction.response.send_message("هذا العضو غير موجود بالفعل في التذكرة", ephemeral=True)
                 else:
-                    add_embed = discord.Embed(title=f"ازالة عضو", description=f"تم ازالة {member.mention} من التذكرة من قبل {interaction.user.mention}", colour= discord.Colour.dark_blue())
+                    reomve_embed = discord.Embed(title=f"ازالة عضو", description=f"تم ازالة {member.mention} من التذكرة من قبل {interaction.user.mention}", colour= discord.Colour.dark_blue())
                     await interaction.channel.set_permissions(member, view_channel = False)
-                    await interaction.response.send_message(embed=add_embed)
+                    await interaction.response.send_message(embed=reomve_embed)
             else:
-                add_embed = discord.Embed(title=f"ازالة عضو", description=f"لم اتمكن من العثور على هذا الضو", colour= discord.Colour.dark_blue())
-                await interaction.response.send_message(embed=add_embed)
+                reomve_embed = discord.Embed(title=f"ازالة عضو", description=f"لم اتمكن من العثور على هذا الضو", colour= discord.Colour.dark_blue())
+                await interaction.response.send_message(embed=reomve_embed)
         else:
             await interaction.response.send_message("هذه ليست تذكرة لأزالة عضو", ephemeral=True)
     else:
