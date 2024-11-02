@@ -164,7 +164,7 @@ async def add(interaction: discord.Interaction, member: discord.User):
     with open("button.json", "r", encoding="utf-8") as f:
         data = json.load(f)
     server_id = str(interaction.guild.id)
-    if not data[server_id] or server_id not in data:
+    if server_id not in data or not data[server_id]:
         await interaction.response.send_message("لم يتم اضافة اي تذاكر بعد", ephemeral=True)
         return
     for roles in data[server_id].values():
@@ -193,7 +193,7 @@ async def delete_ticket(interaction: discord.Interaction):
     server_id = str(interaction.guild.id)
     with open("button.json", "r", encoding="utf-8") as f:
         data = json.load(f)
-    if not data[server_id] or server_id not in data:
+    if server_id not in data or not data[server_id]:
         await interaction.followup.send("لا يوجد اي تذاكر لأزالتها", ephemeral=True)
     else:
         option = []
@@ -214,7 +214,7 @@ async def reomve(interaction: discord.Interaction, member: discord.User):
     with open("button.json", "r", encoding="utf-8") as f:
         data = json.load(f)
     server_id = str(interaction.guild.id)
-    if not data[server_id] or server_id not in data:
+    if server_id not in data or not data[server_id]:
         await interaction.response.send_message("لم يتم اضافة اي تذاكر بعد", ephemeral=True)
         return
     for roles in data[server_id].values():
